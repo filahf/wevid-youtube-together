@@ -1,13 +1,11 @@
 import React from 'react';
-import ThemeToggle from './components/theme/ThemeToggle';
+import Navbar from './components/Navbar';
 import './styles.scss';
 
 function App() {
   return (
     <>
-      <div className='navbar'>
-        <ThemeToggle />
-      </div>
+      <Navbar />
     </>
   );
 }

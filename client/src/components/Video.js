@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
 var player;
 const Video = (props) => {
-  const [videoID, setVideoID] = useState('00vnln25HBg');
-
   const loadVideo = () => {
     player = new window.YT.Player('player', {
-      videoId: videoID,
+      videoId: props.videoID,
       playerVars: {
         autoplay: 1,
         mute: 1,

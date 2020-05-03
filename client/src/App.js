@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Video from './components/Video';
-import './styles.scss';
 import CreateSession from './components/CreateSession';
+import './styles.scss';
 const url = 'ws://localhost:5000';
 
 function App() {
@@ -33,11 +34,19 @@ function App() {
     };
   });
   return (
-    <>
-      <Navbar />
-      <Video videoID={videoID} leader={leader} socket={socket} />
-      <CreateSession session={createSession} />
-    </>
+    <Router>
+      <>
+        <Navbar />
+        <Switch>
+          <Route exact path='/'>
+            <CreateSession session={createSession} />
+          </Route>
+          <Route path='/watch'>
+            <Video videoID={videoID} leader={leader} socket={socket} />
+          </Route>
+        </Switch>
+      </>
+    </Router>
   );
 }
 

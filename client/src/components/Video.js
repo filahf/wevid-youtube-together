@@ -52,6 +52,7 @@ const Video = (props) => {
     JSON.stringify({
       event: 'sync',
       action: 'currenttime',
+      videoID: props.videoID,
       currentTime: player.getCurrentTime(),
     });
 

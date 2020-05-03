@@ -60,13 +60,14 @@ const joinSession = (data, ws) => {
 
   if (session) {
     session.users.push({ ws: ws });
+    var totalusers = session.users.length;
     ws.send(
       JSON.stringify({
         event: 'join',
         videoID: session.videoID,
+        users: totalusers,
       })
     );
-    var totalusers = session.users.length;
     brodcastMessage(
       {
         event: 'users',

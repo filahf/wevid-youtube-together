@@ -6,11 +6,11 @@ const CreateSession = (props) => {
   const [url, setUrl] = useState('');
   const [redirect, setRedirect] = useState(false);
 
-  const sessionID = uuid();
+  const sessionID = uuid().slice(0, 6);
   const handleSubmit = (evt) => {
     evt.preventDefault();
     var videoID = youtubeParser(url);
-    props.session(videoID, sessionID.slice(0, 5), true);
+    props.session(videoID, sessionID, true);
     setRedirect(true);
   };
 
@@ -24,7 +24,7 @@ const CreateSession = (props) => {
     return (
       <Redirect
         to={{
-          pathname: '/watch',
+          pathname: `/watch/`,
         }}
       />
     );

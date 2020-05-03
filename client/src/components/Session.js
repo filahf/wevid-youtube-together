@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Video from './Video';
 
@@ -11,7 +11,6 @@ const Navbar = (props) => {
     sessID = sessionID;
   }
   useEffect(() => {
-    // Update the document title using the browser API
     socket.onopen = () => {
       socket.send(
         JSON.stringify({
@@ -23,17 +22,20 @@ const Navbar = (props) => {
       );
       socket.addEventListener('message', (event) => {
         let data = JSON.parse(event.data);
-        console.log('message data', data);
       });
     };
   });
   return (
-    <Video
-      videoID={props.videoID}
-      leader={props.leader}
-      sessionID={sessID}
-      socket={socket}
-    />
+    <div className='content'>
+      <p>Leader {String(props.leader)}</p>
+      <p>sessionID {props.sessionID}</p>
+      <Video
+        videoID={props.videoID}
+        leader={props.leader}
+        sessionID={sessID}
+        socket={socket}
+      />
+    </div>
   );
 };
 

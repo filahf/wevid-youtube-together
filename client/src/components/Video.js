@@ -79,11 +79,9 @@ const Video = (props) => {
   };
 
   return (
-    <div className='content'>
-      <p>Leader {String(props.leader)}</p>
-      <p>sessionID {props.sessionID}</p>
+    <>
       <div id='player'></div>
-    </div>
+    </>
   );
 };
 

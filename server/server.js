@@ -1,6 +1,5 @@
 const express = require('express');
 const dotenv = require('dotenv');
-const morgan = require('morgan');
 const app = express();
 dotenv.config({ path: './config/config.env' });
 //Body parser
@@ -10,11 +9,6 @@ const server = require('http').createServer();
 const WebSocket = require('ws').Server;
 const wss = new WebSocket({ server: server });
 server.on('request', app);
-
-// Dev logging middleware
-if (process.env.NODE_ENV === 'development') {
-  app.use(morgan('dev'));
-}
 
 server.listen(PORT, () => {
   console.log(`Listening on ${PORT}!`);
@@ -37,84 +31,63 @@ const brodcastMessage = (data, users, ws) => {
 
 const handleMessage = (data, ws) => {
   let event = data.event;
-  if (event === 'room') handleRoomEvent(data, ws);
+  if (event === 'session') handleSessionEvent(data, ws);
   else if (event === 'sync') handleSyncEvent(data, ws);
 };
 
-const findRoomWithId = (id) => {
-  let roomFound;
+const sessionById = (id) => {
+  let sessionFound;
 
-  sessions.forEach((room) => {
-    if (room.roomId === id) roomFound = room;
+  sessions.forEach((session) => {
+    if (session.sessionID === id) {
+      sessionFound = session;
+    }
   });
 
-  return roomFound;
+  return sessionFound;
 };
 
 const handleSyncEvent = (data, ws) => {
-  sessions.forEach((room) => {
-    room.users.forEach((user) => {
-      if (user.ws == ws) brodcastMessage(data, room.users, ws);
+  sessions.forEach((session) => {
+    session.users.forEach((user) => {
+      if (user.ws == ws) brodcastMessage(data, session.users, ws);
     });
   });
 };
 
-const joinRoom = (data, ws) => {
-  let room = findRoomWithId(data.roomId);
+const joinSession = (data, ws) => {
+  let session = sessionById(data.sessionID);
 
-  if (room) {
-    room.users.push({ username: data.username, ws: ws, haveControl: false });
-    notifyUsers(data, ws, room.users);
-  } else createRoom(data, ws);
+  if (session) {
+    session.users.push({ ws: ws });
+    ws.send(
+      JSON.stringify({
+        event: 'join',
+        videoID: session.videoID,
+      })
+    );
+    var totalusers = session.users.length;
+    brodcastMessage(
+      {
+        event: 'users',
+        users: totalusers,
+      },
+      session.users,
+      ws
+    );
+  } else createSession(data, ws);
 };
 
-const handleRoomEvent = (data, ws) => {
+const handleSessionEvent = (data, ws) => {
   let action = data.action;
-  if (action === 'create') createRoom(data, ws);
-  else if (action === 'join') joinRoom(data, ws);
-  else if (action === 'leave') leaveRoom(data, ws);
+  if (action === 'create') createSession(data, ws);
+  else if (action === 'join') joinSession(data, ws);
 };
 
-const leaveRoom = (data, ws) => {
-  let users;
-
-  //Remove user from it's room and sends notification to others
-  sessions.forEach((room) => {
-    room.users.forEach((user, index, object) => {
-      if (user.ws == ws) {
-        users = room.users;
-        object.splice(index, 1);
-      } else
-        brodcastMessage(
-          {
-            event: 'online',
-            action: 'left',
-            username: data.username,
-          },
-          room.users,
-          ws
-        );
-    });
-  });
-};
-
-const createRoom = (data, ws) => {
+const createSession = (data, ws) => {
   sessions.push({
-    roomId: data.roomId,
-    users: [{ username: data.username, ws: ws, haveControl: true }],
+    sessionID: data.sessionID,
+    users: [{ ws: ws }],
+    videoID: data.videoID,
   });
-  ws.send(
-    JSON.stringify({
-      event: 'control',
-      action: 'youhavecontrol',
-      youHaveControl: true,
-    })
-  );
 };
-
-// Handle unhandled promise rejections
-process.on('unhandledRejection', (err, promise) => {
-  console.log(`Error: ${err.message}`);
-  // Close server and exit
-  server.close(() => process.exit(1));
-});

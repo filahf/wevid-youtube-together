@@ -34,13 +34,16 @@ body.dark-mode {
   width: 100%;
   display: flex;
   background-color: #95d3ff;
-  padding: 1rem;
+  padding: 0.2rem;
+}
+.title {
+  margin: 0 auto;
 }
 
 .content {
-  padding: 20px;
+  padding: 1rem;
   margin: 0 auto;
-  margin-top: 60px;
+  margin-top: 5rem;
   max-width: 600px;
   font-size: 20px;
   line-height: 1.3em;

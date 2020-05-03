@@ -1,38 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import Video from './components/Video';
+
 import CreateSession from './components/CreateSession';
+import Session from './components/Session';
 import './styles.scss';
-const url = 'ws://localhost:5000';
 
 function App() {
-  const [leader, setLeader] = useState(true);
+  const [leader, setLeader] = useState(false);
   const [sessionID, setSessionID] = useState(null);
-  const [videoID, setVideoID] = useState('00vnln25HBg');
-  const socket = new WebSocket(url);
+  const [videoID, setVideoID] = useState(null);
+  const [action, setAction] = useState('join');
 
-  const createSession = (id, session) => {
-    setVideoID(id);
-    console.log(id, session);
+  const createSession = (vidID, session, leaderbool) => {
+    setVideoID(vidID);
+    setSessionID(session);
+    setLeader(leaderbool);
+    setAction('create');
+    console.log(vidID, session, leaderbool);
   };
-
-  useEffect(() => {
-    // Update the document title using the browser API
-    socket.onopen = () => {
-      console.log('connected');
-      socket.send(
-        JSON.stringify({
-          event: 'room',
-        })
-      );
-      socket.addEventListener('message', (event) => {
-        let data = JSON.parse(event.data);
-        console.log(data);
-        if (data.event === 'control') this.handleControlEvent(data);
-      });
-    };
-  });
   return (
     <Router>
       <>
@@ -41,8 +27,13 @@ function App() {
           <Route exact path='/'>
             <CreateSession session={createSession} />
           </Route>
-          <Route path='/watch'>
-            <Video videoID={videoID} leader={leader} socket={socket} />
+          <Route path='/watch/:sessionID?'>
+            <Session
+              leader={leader}
+              sessionID={sessionID}
+              videoID={videoID}
+              action={action}
+            />
           </Route>
         </Switch>
       </>

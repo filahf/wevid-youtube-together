@@ -4,7 +4,7 @@ import ThemeToggle from './theme/ThemeToggle';
 const Navbar = () => {
   return (
     <div className='navbar'>
-      <p>Hej</p>
+      <h2 className='title'>Title</h2>
       <ThemeToggle />
     </div>
   );

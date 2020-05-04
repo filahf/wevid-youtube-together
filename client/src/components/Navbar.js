@@ -4,7 +4,7 @@ import ThemeToggle from "./theme/ThemeToggle";
 const Navbar = () => {
   return (
     <div className="navbar">
-      <h2 className="title">Title</h2>
+      <h4 className="title">IhopTube</h4>
       <ThemeToggle />
     </div>
   );

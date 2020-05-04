@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { Redirect } from "react-router-dom";
 var player;
 const Video = (props) => {
   const [videoID, setVideoID] = useState(props.videoID);
+  const [views, setViews] = useState("1");
   const loadVideo = () => {
     player = new window.YT.Player("player", {
       videoId: videoID,
@@ -22,6 +24,7 @@ const Video = (props) => {
       console.log(data);
       if (data.event === "sync") updateVideo(data);
       if (data.event === "join") setVideoID(data.videoID);
+      if (data.event === "users") setViews(data.users);
     });
     if (videoID !== null) {
       if (!window.YT) {
@@ -80,7 +83,11 @@ const Video = (props) => {
 
   return (
     <div style={{ textAlign: "center" }}>
-      <div id="player"></div>
+      {props.leader && <p>{views} Visningar</p>}
+      <div id="player">
+        <h5>no video found</h5>
+        <h2>Dela en egen video</h2>
+      </div>
     </div>
   );
 };

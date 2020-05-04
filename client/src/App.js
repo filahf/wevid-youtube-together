@@ -22,22 +22,23 @@ function App() {
   return (
     <Router>
       <>
-        <div class="skewed"></div>
-
-        <Navbar />
-        <Switch>
-          <Route exact path="/">
-            <CreateSession session={createSession} />
-          </Route>
-          <Route path="/watch/:sessionID?">
-            <Session
-              leader={leader}
-              sessionID={sessionID}
-              videoID={videoID}
-              action={action}
-            />
-          </Route>
-        </Switch>
+        <div className="skewed"></div>
+        <div className="content">
+          <Navbar />
+          <Switch>
+            <Route exact path="/">
+              <CreateSession session={createSession} />
+            </Route>
+            <Route path="/watch/:sessionID?">
+              <Session
+                leader={leader}
+                sessionID={sessionID}
+                videoID={videoID}
+                action={action}
+              />
+            </Route>
+          </Switch>
+        </div>
       </>
     </Router>
   );

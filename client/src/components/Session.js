@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import Video from "./Video";
 import ShareLink from "./ShareLink";
 
@@ -24,7 +25,7 @@ const Navbar = (props) => {
     };
   });
   return (
-    <div className="content">
+    <div>
       {sessID != null && (
         <>
           <Video

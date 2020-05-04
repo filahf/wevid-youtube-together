@@ -28,10 +28,6 @@ body.dark-mode {
   background-color: $dark1;
   color: $light1;
 
-  .navbar {
-    background-color: $dark2;
-  }
-
   .dark-mode-toggle > button {
     color: $dark1;
     &:last-child {
@@ -55,22 +51,20 @@ body.dark-mode {
 }
 
 .navbar {
+  display: flex;
   position: fixed;
   top: 0;
+  justify-content: space-between;
   width: 100%;
-  display: flex;
-  background-color: #ebcb8b;
+  max-width: 860px;
   padding: 0.2rem;
-}
-.title {
-  margin: 0 auto;
 }
 
 .content {
   padding: 1rem;
   margin: 0 auto;
   margin-top: 5rem;
-  max-width: 700px;
+  max-width: 860px;
   font-size: 20px;
   line-height: 1.3em;
 
@@ -105,8 +99,6 @@ body.dark-mode .skewed {
 
 .dark-mode-toggle {
   display: flex;
-  margin-left: auto;
-  margin-right: 2rem;
   & > button {
     font-size: 1.2em;
     background: none;

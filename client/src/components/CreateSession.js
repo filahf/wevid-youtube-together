@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { uuid } from "uuidv4";
 import { Redirect } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlay } from "@fortawesome/free-solid-svg-icons";
 
 const CreateSession = (props) => {
   const [url, setUrl] = useState("");
@@ -30,21 +32,19 @@ const CreateSession = (props) => {
     );
   }
   return (
-    <div className="content">
-      <div className="share-container">
-        <h1 className="text">Enter a YouTube link</h1>
-        <form className="share-form" onSubmit={handleSubmit}>
-          <input
-            className="share-input"
-            type="text"
-            value={url}
-            onChange={(e) => setUrl(e.target.value)}
-          />
-          <button className="share-button" type="Submit">
-            sök
-          </button>
-        </form>
-      </div>
+    <div className="share-container">
+      <h1 className="text">Enter a YouTube link</h1>
+      <form className="share-form" onSubmit={handleSubmit}>
+        <input
+          className="share-input"
+          type="text"
+          value={url}
+          onChange={(e) => setUrl(e.target.value)}
+        />
+        <button className="share-button" type="Submit">
+          <FontAwesomeIcon icon={faPlay} />
+        </button>
+      </form>
     </div>
   );
 };

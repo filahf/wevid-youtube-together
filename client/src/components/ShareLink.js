@@ -16,7 +16,7 @@ export default function CopyExample() {
   return (
     <div>
       {
-        /* Logical shortcuto only displaying the 
+        /* Logical shortcuto ony displaying the 
           button if the copy command exists */
         document.queryCommandSupported("copy") && (
           <div>

@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { uuid } from 'uuidv4';
-import { Redirect } from 'react-router-dom';
+import React, { useState } from "react";
+import { uuid } from "uuidv4";
+import { Redirect } from "react-router-dom";
 
 const CreateSession = (props) => {
-  const [url, setUrl] = useState('');
+  const [url, setUrl] = useState("");
   const [redirect, setRedirect] = useState(false);
 
   const sessionID = uuid().slice(0, 6);
@@ -30,18 +30,21 @@ const CreateSession = (props) => {
     );
   }
   return (
-    <div className='content'>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Youtube url:
+    <div className="content">
+      <div className="share-container">
+        <h1 className="text">Enter a YouTube link</h1>
+        <form className="share-form" onSubmit={handleSubmit}>
           <input
-            type='text'
+            className="share-input"
+            type="text"
             value={url}
             onChange={(e) => setUrl(e.target.value)}
           />
-        </label>
-        <input type='submit' value='Submit' />
-      </form>
+          <button className="share-button" type="Submit">
+            sök
+          </button>
+        </form>
+      </div>
     </div>
   );
 };

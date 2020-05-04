@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Video from "./Video";
 import ShareLink from "./ShareLink";
@@ -21,22 +21,21 @@ const Navbar = (props) => {
           videoID: props.videoID,
         })
       );
-      socket.addEventListener("message", (event) => {
-        let data = JSON.parse(event.data);
-      });
     };
   });
   return (
     <div className="content">
-      <p>Leader {String(props.leader)}</p>
-      <p>sessionID {props.sessionID}</p>
-      <Video
-        videoID={props.videoID}
-        leader={props.leader}
-        sessionID={sessID}
-        socket={socket}
-      />
-      <ShareLink />
+      {sessID != null && (
+        <>
+          <Video
+            videoID={props.videoID}
+            leader={props.leader}
+            sessionID={sessID}
+            socket={socket}
+          />
+        </>
+      )}
+      {props.leader && <ShareLink link={props.sessionID} />}
     </div>
   );
 };

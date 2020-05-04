@@ -1,3 +1,15 @@
+$dark1: #2e3440;
+$dark2: #3b4252;
+$dark3: #434c5e;
+$dark4: #4c566a;
+
+$light1: #d8dee9;
+$light2: #e5e9f0;
+$light3: #eceff4;
+
+$frost1: #88c0d0;
+$frost2: #81a1c1;
+$frost3: #5e81ac;
 html,
 body {
   margin: 0;
@@ -7,30 +19,39 @@ body {
 }
 
 body.light-mode {
-  background-color: #fff;
-  color: #333;
+  background-color: $light1;
+  color: $dark1;
   transition: background-color 0.3s ease;
-}
-.share {
-  border: none;
-  background-color: #3cbc8d;
-  color: white;
 }
 
 body.dark-mode {
-  background-color: #10171d;
-  color: #dfdfdf;
+  background-color: $dark1;
+  color: $light1;
 
   .navbar {
-    background-color: #1b2938;
+    background-color: $dark2;
   }
 
   .dark-mode-toggle > button {
-    color: #999;
+    color: $dark1;
     &:last-child {
-      color: lightblue;
+      color: $light1;
     }
   }
+}
+
+.skewed {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background: #ebcb8b;
+  z-index: -1;
+  transform: skewY(4deg);
+  transform-origin: top right;
 }
 
 .navbar {
@@ -38,7 +59,7 @@ body.dark-mode {
   top: 0;
   width: 100%;
   display: flex;
-  background-color: #95d3ff;
+  background-color: #ebcb8b;
   padding: 0.2rem;
 }
 .title {
@@ -49,7 +70,7 @@ body.dark-mode {
   padding: 1rem;
   margin: 0 auto;
   margin-top: 5rem;
-  max-width: 600px;
+  max-width: 700px;
   font-size: 20px;
   line-height: 1.3em;
 
@@ -61,37 +82,25 @@ body.dark-mode {
     width: 100%;
   }
 
-  code {
-    background-color: #cbe9ff;
-    border-radius: 2px;
-    font-size: 1em;
-    padding: 0 5px;
-  }
-
   a {
     text-decoration: none;
-    color: #006688;
+    color: $frost3;
+  }
+  input {
+    background-color: $light3;
   }
 
   button {
-    color: #006688;
-    background-color: transparent;
-    border: none;
-    font-size: 1em;
-    padding: 0;
+    background-color: $light3;
   }
 }
 
-body.dark-mode .content code {
-  background-color: #1b2938;
-}
-
-body.dark-mode .content a {
-  color: #ee09;
-}
-
 body.dark-mode .content button {
-  color: #ee09;
+  color: $dark1;
+}
+
+body.dark-mode .skewed {
+  background-color: $dark2;
 }
 
 .dark-mode-toggle {
@@ -156,4 +165,41 @@ input[type="checkbox"].dmcheck {
     opacity: 0.9;
     background-color: #f6f6f6;
   }
+}
+
+.share-container {
+  justify-content: center;
+  text-align: center;
+}
+
+.text {
+  margin-left: auto;
+  margin-right: auto;
+}
+.share-form {
+  /* This bit sets up the horizontal layout */
+  display: flex;
+  flex-direction: row;
+}
+
+.share-input {
+  /* Tell the input to use all the available space */
+  flex: 1;
+  font-size: 1rem;
+  padding: 1rem;
+  border-radius: 1rem 0rem 0rem 1rem;
+  /* And hide the input's outline, so the form looks like the outline */
+  border: none;
+}
+
+.share-input:focus {
+  /* removing the input focus blue box. Put this on the form if you like. */
+  outline: none;
+}
+
+.share-button {
+  border: none;
+  font-size: 1.2em;
+  padding-right: 2rem;
+  border-radius: 0px 1rem 1rem 0px;
 }

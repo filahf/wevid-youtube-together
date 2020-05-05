@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from "react";
-import { toast } from "react-toastify";
-import LeaderBar from "./LeaderBar";
+import React, { useState, useEffect } from 'react';
+import { toast } from 'react-toastify';
+import LeaderBar from '../session/LeaderBar';
 var player;
 const Video = (props) => {
-  const notify = () => toast("En vän har anslutit!");
+  const notify = () => toast('En vän har anslutit!');
 
   const [videoID, setVideoID] = useState(props.videoID);
 
   const loadVideo = () => {
-    player = new window.YT.Player("player", {
+    player = new window.YT.Player('player', {
       videoId: videoID,
       playerVars: {
         autoplay: 0,
@@ -22,21 +22,21 @@ const Video = (props) => {
   };
 
   useEffect(() => {
-    props.socket.addEventListener("message", (event) => {
+    props.socket.addEventListener('message', (event) => {
       let data = JSON.parse(event.data);
       console.log(data);
-      if (data.event === "sync") updateVideo(data);
-      if (data.event === "join") setVideoID(data.videoID);
-      if (data.event === "users") notify();
+      if (data.event === 'sync') updateVideo(data);
+      if (data.event === 'join') setVideoID(data.videoID);
+      if (data.event === 'users') notify();
     });
     if (videoID !== null) {
       if (!window.YT) {
-        const tag = document.createElement("script");
-        tag.src = "http://www.youtube.com/iframe_api";
+        const tag = document.createElement('script');
+        tag.src = 'http://www.youtube.com/iframe_api';
 
         window.onYouTubeIframeAPIReady = loadVideo;
 
-        const firstScriptTag = document.getElementsByTagName("script")[0];
+        const firstScriptTag = document.getElementsByTagName('script')[0];
         firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
       } else loadVideo();
     }
@@ -45,12 +45,12 @@ const Video = (props) => {
   const updateVideo = (data) => {
     let videoStatus = player.getPlayerState();
     if (
-      data.action === "currenttime" &&
+      data.action === 'currenttime' &&
       (videoStatus === 2 || videoStatus === -1)
     ) {
       playVideo();
       seekTo(data.currentTime);
-    } else if (data.action === "pause" && videoStatus !== 2) pauseVideo();
+    } else if (data.action === 'pause' && videoStatus !== 2) pauseVideo();
   };
 
   const onPlayerReady = (event) => event.target.playVideo();
@@ -64,15 +64,15 @@ const Video = (props) => {
   const syncPause = () => {
     props.socket.send(
       JSON.stringify({
-        event: "sync",
-        action: "pause",
+        event: 'sync',
+        action: 'pause',
       })
     );
   };
   const currentStatus = () =>
     JSON.stringify({
-      event: "sync",
-      action: "currenttime",
+      event: 'sync',
+      action: 'currenttime',
       videoID: videoID,
       currentTime: player.getCurrentTime(),
     });
@@ -86,8 +86,8 @@ const Video = (props) => {
 
   return (
     <>
-      <div style={{ textAlign: "center" }}>
-        <div id="player" style={{ textAlign: "center" }}>
+      <div style={{ textAlign: 'center' }}>
+        <div id='player' style={{ textAlign: 'center' }}>
           <h5>no video found</h5>
           <h2>Dela en egen video</h2>
         </div>

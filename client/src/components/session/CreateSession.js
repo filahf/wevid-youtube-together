@@ -1,11 +1,12 @@
-import React, { useState } from "react";
-import { uuid } from "uuidv4";
-import { Redirect } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlay } from "@fortawesome/free-solid-svg-icons";
+import React, { useState } from 'react';
+import { uuid } from 'uuidv4';
+import { Redirect } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlay } from '@fortawesome/free-solid-svg-icons';
+import './createSession.scss';
 
 const CreateSession = (props) => {
-  const [url, setUrl] = useState("");
+  const [url, setUrl] = useState('');
   const [redirect, setRedirect] = useState(false);
 
   const sessionID = uuid().slice(0, 6);
@@ -32,16 +33,16 @@ const CreateSession = (props) => {
     );
   }
   return (
-    <div className="share-container">
-      <h1 className="text">Enter a YouTube link</h1>
-      <form className="share-form" onSubmit={handleSubmit}>
+    <div className='share-container'>
+      <h1 className='text'>Enter a YouTube link</h1>
+      <form className='share-form' onSubmit={handleSubmit}>
         <input
-          className="share-input"
-          type="text"
+          className='share-input'
+          type='text'
           value={url}
           onChange={(e) => setUrl(e.target.value)}
         />
-        <button className="share-button" type="Submit">
+        <button className='share-button' type='Submit'>
           <FontAwesomeIcon icon={faPlay} />
         </button>
       </form>

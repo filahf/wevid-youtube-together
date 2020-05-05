@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import Video from "./Video";
-import ShareLink from "./ShareLink";
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import Video from '../video/Video';
+import ShareLink from './ShareLink';
 
 const Navbar = (props) => {
-  const url = "ws://localhost:5000";
+  const url = 'ws://localhost:5000';
   const socket = new WebSocket(url);
   let sessID = props.sessionID;
 
@@ -17,7 +17,7 @@ const Navbar = (props) => {
     socket.onopen = () => {
       socket.send(
         JSON.stringify({
-          event: "session",
+          event: 'session',
           action: props.action,
           sessionID: sessID,
           videoID: props.videoID,

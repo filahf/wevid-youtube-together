@@ -2,7 +2,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
 
-const Navbar = (props) => {
+const LeaderBar = (props) => {
   return (
     <div className="leader-bar">
       <p>Du har kontrollen!</p>
@@ -15,4 +15,4 @@ const Navbar = (props) => {
   );
 };
 
-export default Navbar;
+export default LeaderBar;

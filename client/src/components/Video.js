@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
+import { toast } from "react-toastify";
 import LeaderBar from "./LeaderBar";
 var player;
 const Video = (props) => {
+  const notify = () => toast("En vän har anslutit!");
+
   const [videoID, setVideoID] = useState(props.videoID);
   const [views, setViews] = useState("1");
   const loadVideo = () => {
@@ -19,12 +22,16 @@ const Video = (props) => {
   };
 
   useEffect(() => {
+    function userJoined(data) {
+      setViews(data);
+      notify();
+    }
     props.socket.addEventListener("message", (event) => {
       let data = JSON.parse(event.data);
       console.log(data);
       if (data.event === "sync") updateVideo(data);
       if (data.event === "join") setVideoID(data.videoID);
-      if (data.event === "users") setViews(data.users);
+      if (data.event === "users") notify();
     });
     if (videoID !== null) {
       if (!window.YT) {
@@ -83,13 +90,12 @@ const Video = (props) => {
 
   return (
     <>
-      {props.leader && <LeaderBar views={views} />}
-
       <div style={{ textAlign: "center" }}>
         <div id="player" style={{ textAlign: "center" }}>
           <h5>no video found</h5>
           <h2>Dela en egen video</h2>
         </div>
+        {props.leader && <LeaderBar views={views} />}
       </div>
     </>
   );

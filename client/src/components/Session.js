@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Video from "./Video";
 import ShareLink from "./ShareLink";
@@ -7,6 +7,7 @@ const Navbar = (props) => {
   const url = "ws://localhost:5000";
   const socket = new WebSocket(url);
   let sessID = props.sessionID;
+
   let { sessionID } = useParams();
   if (!sessID) {
     sessID = sessionID;

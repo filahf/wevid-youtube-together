@@ -6,7 +6,7 @@ const Video = (props) => {
   const notify = () => toast("En vän har anslutit!");
 
   const [videoID, setVideoID] = useState(props.videoID);
-  const [views, setViews] = useState("1");
+
   const loadVideo = () => {
     player = new window.YT.Player("player", {
       videoId: videoID,
@@ -22,10 +22,6 @@ const Video = (props) => {
   };
 
   useEffect(() => {
-    function userJoined(data) {
-      setViews(data);
-      notify();
-    }
     props.socket.addEventListener("message", (event) => {
       let data = JSON.parse(event.data);
       console.log(data);
@@ -95,7 +91,7 @@ const Video = (props) => {
           <h5>no video found</h5>
           <h2>Dela en egen video</h2>
         </div>
-        {props.leader && <LeaderBar views={views} />}
+        {props.leader && <LeaderBar views={props.views} />}
       </div>
     </>
   );

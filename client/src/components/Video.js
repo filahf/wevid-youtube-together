@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Redirect } from "react-router-dom";
+import LeaderBar from "./LeaderBar";
 var player;
 const Video = (props) => {
   const [videoID, setVideoID] = useState(props.videoID);
@@ -82,13 +82,16 @@ const Video = (props) => {
   };
 
   return (
-    <div style={{ textAlign: "center" }}>
-      {props.leader && <p>{views} Visningar</p>}
-      <div id="player">
-        <h5>no video found</h5>
-        <h2>Dela en egen video</h2>
+    <>
+      {props.leader && <LeaderBar views={views} />}
+
+      <div style={{ textAlign: "center" }}>
+        <div id="player" style={{ textAlign: "center" }}>
+          <h5>no video found</h5>
+          <h2>Dela en egen video</h2>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

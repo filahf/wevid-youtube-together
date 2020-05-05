@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { Redirect } from "react-router-dom";
 import Video from "./Video";
 import ShareLink from "./ShareLink";
 
@@ -12,6 +11,7 @@ const Navbar = (props) => {
   if (!sessID) {
     sessID = sessionID;
   }
+
   useEffect(() => {
     socket.onopen = () => {
       socket.send(
@@ -26,16 +26,13 @@ const Navbar = (props) => {
   });
   return (
     <div>
-      {sessID != null && (
-        <>
-          <Video
-            videoID={props.videoID}
-            leader={props.leader}
-            sessionID={sessID}
-            socket={socket}
-          />
-        </>
-      )}
+      <Video
+        videoID={props.videoID}
+        leader={props.leader}
+        sessionID={sessID}
+        socket={socket}
+      />
+
       {props.leader && <ShareLink link={props.sessionID} />}
     </div>
   );

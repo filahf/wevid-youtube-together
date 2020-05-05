@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 import Navbar from "./components/Navbar";
+import "react-toastify/dist/ReactToastify.css";
 
 import CreateSession from "./components/CreateSession";
 import Session from "./components/Session";
@@ -35,6 +37,17 @@ function App() {
                 sessionID={sessionID}
                 videoID={videoID}
                 action={action}
+              />
+              <ToastContainer
+                position="bottom-right"
+                autoClose={3000}
+                hideProgressBar={true}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
               />
             </Route>
           </Switch>

@@ -195,3 +195,62 @@ input[type="checkbox"].dmcheck {
   padding-right: 2rem;
   border-radius: 0px 1rem 1rem 0px;
 }
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -60px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+.leader-bar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.Toastify__toast {
+  font-family: inherit;
+  color: $dark1;
+  background-color: #ebcb8b;
+}
+
+body.dark-mode .Toastify__toast {
+  background-color: $dark2;
+  color: $light2;
+}
+
+.Toastify__close-button {
+  background-color: white;
+}

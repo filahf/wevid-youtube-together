@@ -42,12 +42,11 @@ body.dark-mode {
   bottom: 0;
   right: 0;
   left: 0;
+  background: #81a1c1;
+  height: 40vh;
   width: 100%;
-  height: 50%;
-  background: #ebcb8b;
-  z-index: -1;
-  transform: skewY(4deg);
-  transform-origin: top right;
+  border-bottom-left-radius: 90% 50%;
+  border-bottom-right-radius: 90% 50%;
 }
 
 .container {
@@ -61,7 +60,7 @@ body.dark-mode {
 
 .content {
   padding: 1rem;
-  margin-top: 5rem;
+  margin-top: 0rem;
   margin-bottom: 5rem;
   font-size: 20px;
   line-height: 1.3em;
@@ -88,7 +87,7 @@ body.dark-mode {
 }
 
 body.dark-mode .content button {
-  color: $dark1;
+  color: #bf616a;
 }
 
 body.dark-mode .skewed {
@@ -105,7 +104,7 @@ body.dark-mode .skewed {
     cursor: pointer;
     transition: color 0.3s ease;
     &:last-child {
-      color: #666;
+      color: $dark1;
     }
 
     &:focus {
@@ -159,8 +158,9 @@ input[type='checkbox'].dmcheck {
 
 .Toastify__toast {
   font-family: inherit;
+  font-size: large;
   color: $dark1;
-  background-color: #ebcb8b;
+  background-color: #81a1c1;
 }
 
 body.dark-mode .Toastify__toast {
@@ -169,5 +169,5 @@ body.dark-mode .Toastify__toast {
 }
 
 .Toastify__close-button {
-  background-color: white;
+  background-color: none;
 }

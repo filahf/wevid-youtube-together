@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
-import LeaderBar from '../session/LeaderBar';
+import './video.scss';
 var player;
 const Video = (props) => {
-  const notify = () => toast('En vän har anslutit!');
-
+  const notify = () => {
+    toast('En vän har anslutit!');
+  };
+  const intervalRef = useRef();
   const [videoID, setVideoID] = useState(props.videoID);
 
   const loadVideo = () => {
@@ -21,12 +23,17 @@ const Video = (props) => {
     });
   };
 
+  const join = (data) => {
+    intervalRef.current = data.users;
+    setVideoID(data.videoID);
+  };
+
   useEffect(() => {
     props.socket.addEventListener('message', (event) => {
       let data = JSON.parse(event.data);
       console.log(data);
       if (data.event === 'sync') updateVideo(data);
-      if (data.event === 'join') setVideoID(data.videoID);
+      if (data.event === 'join') join(data);
       if (data.event === 'users') notify();
     });
     if (videoID !== null) {
@@ -86,12 +93,13 @@ const Video = (props) => {
 
   return (
     <>
-      <div style={{ textAlign: 'center' }}>
-        <div id='player' style={{ textAlign: 'center' }}>
-          <h5>no video found</h5>
-          <h2>Dela en egen video</h2>
+      <div className='videoWrap'>
+        <div className='video'>
+          <div id='player'>
+            <h5>no video found</h5>
+            <h2>Dela en egen video</h2>
+          </div>
         </div>
-        {props.leader && <LeaderBar views={props.views} />}
       </div>
     </>
   );

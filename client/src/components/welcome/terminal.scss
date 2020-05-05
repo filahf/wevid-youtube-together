@@ -1,0 +1,60 @@
+.terminal-head {
+  height: 1rem;
+  background-color: #2e3440;
+  border-radius: 10px 10px 0 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 0rem;
+}
+
+.close {
+  height: 0.5rem;
+  width: 0.5rem;
+  background-color: #bf616a;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 10px;
+}
+.max {
+  height: 0.5rem;
+  width: 0.5rem;
+  background-color: #a3be8c;
+  border-radius: 50%;
+  display: inline-block;
+}
+.min {
+  height: 0.5rem;
+  width: 0.5rem;
+  background-color: #ebcb8b;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 10px;
+}
+.card {
+  background: #434c5e;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  flex: 0 1 24%;
+  border-radius: 0 0 10px 10px;
+  min-height: 100px;
+  margin-top: 0rem;
+  margin-bottom: 0rem;
+  padding: 0.5rem;
+  padding-top: 0rem;
+}
+
+.markdown {
+  box-sizing: border-box;
+}
+
+.script-box {
+  position: relative;
+  will-change: width, height, left, top;
+  min-height: 100px;
+  height: 100%;
+  bottom: 0;
+}
+
+.terminalWrap {
+  min-width: 200px;
+}

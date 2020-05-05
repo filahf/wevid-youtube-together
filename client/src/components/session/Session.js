@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import Video from '../video/Video';
 import ShareLink from './ShareLink';
 
@@ -25,6 +26,15 @@ const Navbar = (props) => {
       );
     };
   });
+  if (sessionID === 'leader' && !props.leader) {
+    return (
+      <Redirect
+        to={{
+          pathname: `/`,
+        }}
+      />
+    );
+  }
   return (
     <div>
       <Video

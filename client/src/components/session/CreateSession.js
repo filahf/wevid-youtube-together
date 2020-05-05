@@ -3,16 +3,24 @@ import { uuid } from 'uuidv4';
 import { Redirect } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay } from '@fortawesome/free-solid-svg-icons';
+import Welcome from '../welcome/welcome';
+
 import './createSession.scss';
+import { toast } from 'react-toastify';
 
 const CreateSession = (props) => {
   const [url, setUrl] = useState('');
   const [redirect, setRedirect] = useState(false);
+  const notify = () => toast('Ogiltig länk!');
 
   const sessionID = uuid().slice(0, 6);
   const handleSubmit = (evt) => {
     evt.preventDefault();
     var videoID = youtubeParser(url);
+    if (!videoID) {
+      notify();
+      return;
+    }
     props.session(videoID, sessionID, true);
     setRedirect(true);
   };
@@ -27,26 +35,29 @@ const CreateSession = (props) => {
     return (
       <Redirect
         to={{
-          pathname: `/watch/`,
+          pathname: `/watch/leader`,
         }}
       />
     );
   }
   return (
-    <div className='share-container'>
-      <h1 className='text'>Enter a YouTube link</h1>
-      <form className='share-form' onSubmit={handleSubmit}>
-        <input
-          className='share-input'
-          type='text'
-          value={url}
-          onChange={(e) => setUrl(e.target.value)}
-        />
-        <button className='share-button' type='Submit'>
-          <FontAwesomeIcon icon={faPlay} />
-        </button>
-      </form>
-    </div>
+    <>
+      <Welcome />
+      <div className='share-container'>
+        <h1 className='text'>Klistra in en Youtubelänk</h1>
+        <form className='share-form' onSubmit={handleSubmit}>
+          <input
+            className='share-input'
+            type='text'
+            value={url}
+            onChange={(e) => setUrl(e.target.value)}
+          />
+          <button className='share-button' type='Submit'>
+            <FontAwesomeIcon icon={faPlay} />
+          </button>
+        </form>
+      </div>
+    </>
   );
 };
 

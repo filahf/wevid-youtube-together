@@ -4,7 +4,7 @@ import './video.scss';
 var player;
 const Video = (props) => {
   const notify = () => {
-    toast('En vän har anslutit!');
+    toast('A Friend Joined');
   };
   const intervalRef = useRef();
   const [videoID, setVideoID] = useState(props.videoID);

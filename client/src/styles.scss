@@ -170,8 +170,8 @@ input[type='checkbox'].dmcheck {
 }
 
 .Toastify__toast {
-  font-family: inherit;
-  font-size: large;
+  font-size: 1rem;
+  font-weight: bold;
   color: $dark1;
   background-color: #81a1c1;
 }

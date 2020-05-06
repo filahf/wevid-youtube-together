@@ -11,7 +11,7 @@ import { toast } from 'react-toastify';
 const CreateSession = (props) => {
   const [url, setUrl] = useState('');
   const [redirect, setRedirect] = useState(false);
-  const notify = () => toast('Ogiltig länk!');
+  const notify = () => toast('Invalid Link!');
 
   const sessionID = uuid().slice(0, 6);
   const handleSubmit = (evt) => {

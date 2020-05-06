@@ -42,11 +42,20 @@ body.dark-mode {
   bottom: 0;
   right: 0;
   left: 0;
-  background: #81a1c1;
-  height: 50vh;
   width: 100%;
-  border-bottom-left-radius: 90% 50%;
-  border-bottom-right-radius: 90% 50%;
+  height: 40%;
+  background: #81a1c1;
+  z-index: 0;
+  transform: skewY(5deg);
+  transform-origin: top right;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:visited {
+  color: inherit;
 }
 
 .container {
@@ -73,10 +82,6 @@ body.dark-mode {
     width: 100%;
   }
 
-  a {
-    text-decoration: none;
-    color: $frost3;
-  }
   input {
     background-color: $light3;
   }
@@ -84,6 +89,14 @@ body.dark-mode {
   button {
     background-color: $light3;
   }
+
+  Link {
+    color: $dark3;
+  }
+}
+
+body.dark-mode Link {
+  color: $light3;
 }
 
 body.dark-mode .content button {

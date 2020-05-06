@@ -46,7 +46,7 @@ const CreateSession = (props) => {
       <div className='share-container'>
         <form className='share-form' onSubmit={handleSubmit}>
           <input
-            placeholder='Klistra in en Youtubelänk'
+            placeholder='Paste a YouTube link '
             className='share-input'
             type='text'
             value={url}

@@ -96,7 +96,7 @@ const Video = (props) => {
       <div className='videoWrap'>
         <div className='video'>
           <div id='player'>
-            <h3>Videon finns inte kvar</h3>
+            <h3>No video found</h3>
           </div>
         </div>
       </div>

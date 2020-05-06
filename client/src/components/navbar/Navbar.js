@@ -11,7 +11,7 @@ const Navbar = () => {
           <h4>IhopTube.se</h4>
         </Link>
         <Link to='/'>
-          <h4>Dela en Video</h4>
+          <h4>Share a Video</h4>
         </Link>
         <ThemeToggle />
       </div>

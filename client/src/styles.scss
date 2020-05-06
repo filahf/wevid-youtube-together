@@ -20,7 +20,7 @@ body {
 
 body.light-mode {
   background-color: $light1;
-  color: $dark1;
+  color: #434c5e;
   transition: background-color 0.3s ease;
 }
 
@@ -43,7 +43,7 @@ body.dark-mode {
   right: 0;
   left: 0;
   background: #81a1c1;
-  height: 40vh;
+  height: 50vh;
   width: 100%;
   border-bottom-left-radius: 90% 50%;
   border-bottom-right-radius: 90% 50%;
@@ -60,7 +60,7 @@ body.dark-mode {
 
 .content {
   padding: 1rem;
-  margin-top: 0rem;
+  margin-top: 2rem;
   margin-bottom: 5rem;
   font-size: 20px;
   line-height: 1.3em;
@@ -100,7 +100,7 @@ body.dark-mode .skewed {
     font-size: 1.2em;
     background: none;
     border: none;
-    color: #ffe600;
+    color: #ebcb8b;
     cursor: pointer;
     transition: color 0.3s ease;
     &:last-child {

@@ -1,16 +1,13 @@
 import React from 'react';
-
-import Terminal from './terminal';
 import './welcome.scss';
+import { ReactComponent as Graphic } from '../../assets/graphic.svg';
+import Graph from '../../assets/graphic.js';
 
 const Welcome = () => {
   return (
     <div className='welcomecon'>
-      <h2>Kolla på youtubeklipp med dina vänner i synk!</h2>
-      <div className='welcome'>
-        <Terminal />
-        <Terminal />
-      </div>
+      <Graph />
+      <h2>Kolla på YouTube med dina vänner i synk!</h2>
     </div>
   );
 };

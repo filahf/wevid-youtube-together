@@ -1,12 +1,87 @@
-.welcome {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  max-width: 860px;
-  margin-top: 0rem;
-  padding: 0.2rem;
-}
-
 .welcomecon {
   text-align: center;
+}
+
+#Bubbles [fill] {
+  fill: #e5e9f0;
+}
+body.dark-mode #Bubbles [fill] {
+  fill: #434c5e;
+}
+
+#Shadow [fill] {
+  fill: #5e81ac;
+}
+body.dark-mode #Shadow [fill] {
+  fill: #2e3440;
+}
+#BackBubble [fill] {
+  fill: #bf616a;
+}
+#girlTop [fill] {
+  fill: #ebcb8b;
+}
+body.dark-mode #girlTop [fill] {
+  fill: #3b4252;
+}
+
+#boyTop1 [fill] {
+  fill: #ebcb8b;
+}
+#boyTop2 [fill] {
+  fill: #ebcb8b;
+}
+body.dark-mode #boyTop1 [fill] {
+  fill: #3b4252;
+}
+body.dark-mode #boyTop2 [fill] {
+  fill: #3b4252;
+}
+#videoShirt [fill] {
+  fill: #5e81ac;
+}
+body.dark-mode #videoShirt [fill] {
+  fill: #2e3440;
+}
+#videohead {
+  animation: videoGuy 1s ease-in-out infinite alternate;
+  transform-origin: bottom;
+  transform-box: fill-box;
+}
+#ytMarker1 {
+  animation: marker 12s ease-in infinite;
+  transform-origin: left;
+  transform-box: fill-box;
+}
+#ytMarker2 {
+  animation: marker2 12s ease-in infinite;
+  transform-origin: bottom;
+  transform-box: fill-box;
+}
+
+@keyframes videoGuy {
+  from {
+    transform: translateY(0%) translateX(0%);
+  }
+  to {
+    transform: translateY(1%) translateX(1%);
+  }
+}
+
+@keyframes marker {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(1300%);
+  }
+}
+
+@keyframes marker2 {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(1200%);
+  }
 }

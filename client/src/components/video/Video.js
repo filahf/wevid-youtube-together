@@ -96,8 +96,7 @@ const Video = (props) => {
       <div className='videoWrap'>
         <div className='video'>
           <div id='player'>
-            <h5>no video found</h5>
-            <h2>Dela en egen video</h2>
+            <h3>Videon finns inte kvar</h3>
           </div>
         </div>
       </div>

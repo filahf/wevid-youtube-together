@@ -43,7 +43,6 @@ const Navbar = (props) => {
         sessionID={sessID}
         socket={socket}
       />
-
       {props.leader && <ShareLink link={props.sessionID} />}
     </div>
   );

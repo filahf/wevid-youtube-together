@@ -32,7 +32,7 @@ function App() {
             <Route exact path='/'>
               <CreateSession session={createSession} />
             </Route>
-            <Route path='/watch/:sessionID?'>
+            <Route path='/watch/:sessionID'>
               <Session
                 leader={leader}
                 sessionID={sessionID}

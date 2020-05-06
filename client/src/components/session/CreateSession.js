@@ -44,9 +44,9 @@ const CreateSession = (props) => {
     <>
       <Welcome />
       <div className='share-container'>
-        <h1 className='text'>Klistra in en Youtubelänk</h1>
         <form className='share-form' onSubmit={handleSubmit}>
           <input
+            placeholder='Klistra in en Youtubelänk'
             className='share-input'
             type='text'
             value={url}

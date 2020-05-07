@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { uuid } from 'uuidv4';
-import { Redirect } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay } from '@fortawesome/free-solid-svg-icons';
 import Welcome from '../welcome/welcome';
@@ -9,6 +9,7 @@ import './createSession.scss';
 import { toast } from 'react-toastify';
 
 const CreateSession = (props) => {
+  const history = useHistory();
   const [url, setUrl] = useState('');
   const [redirect, setRedirect] = useState(false);
   const notify = () => toast('Invalid Link!');
@@ -32,13 +33,7 @@ const CreateSession = (props) => {
   };
 
   if (redirect) {
-    return (
-      <Redirect
-        to={{
-          pathname: `/watch/leader`,
-        }}
-      />
-    );
+    history.push('/watch/leader');
   }
   return (
     <>

@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { Redirect } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import Video from '../video/Video';
 import ShareLink from './ShareLink';
 
 const Session = (props) => {
+  const history = useHistory();
   const url = 'ws://youtube-together-app.herokuapp.com/';
   const socket = new WebSocket(url);
   let sessID = props.sessionID;
@@ -27,13 +28,14 @@ const Session = (props) => {
     };
   });
   if (sessionID === 'leader' && !props.leader) {
-    return (
+    history.push('/');
+    /*     return (
       <Redirect
         to={{
           pathname: `/`,
         }}
       />
-    );
+    ); */
   }
   return (
     <div>

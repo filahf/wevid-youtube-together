@@ -6,7 +6,7 @@ const Welcome = () => {
   return (
     <div className='welcomecon'>
       <Graph />
-      <h2>Watch YouTube with loved ones in sync!</h2>
+      <h2>Watch YouTube in sync with loved ones!</h2>
     </div>
   );
 };

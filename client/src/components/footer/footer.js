@@ -11,7 +11,7 @@ const Navbar = () => {
           target='_blank'
           rel='noopener noreferrer'
         >
-          Filip Åhfelt
+          filipahfelt.se
         </a>
       </p>
     </footer>

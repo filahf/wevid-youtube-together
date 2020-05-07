@@ -4,8 +4,8 @@ import { Redirect } from 'react-router-dom';
 import Video from '../video/Video';
 import ShareLink from './ShareLink';
 
-const Navbar = (props) => {
-  const url = 'ws://localhost:5000';
+const Session = (props) => {
+  const url = 'ws://youtube-together-app.herokuapp.com/';
   const socket = new WebSocket(url);
   let sessID = props.sessionID;
 
@@ -48,4 +48,4 @@ const Navbar = (props) => {
   );
 };
 
-export default Navbar;
+export default Session;

@@ -1,13 +1,17 @@
 const express = require('express');
 const dotenv = require('dotenv');
+const cors = require('cors');
 const app = express();
 dotenv.config({ path: './config/config.env' });
 //Body parser
 app.use(express.json());
+app.use(cors());
 const PORT = process.env.PORT || 5000;
+
 const server = require('http').createServer();
 const WebSocket = require('ws').Server;
 const wss = new WebSocket({ server: server });
+
 server.on('request', app);
 
 server.listen(PORT, () => {

@@ -3,8 +3,19 @@
   text-align: center;
 }
 
+.video {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  height: 0;
+}
+
 .video iframe {
-  -webkit-box-shadow: 0px 8px 22px 0px rgba(0, 0, 0, 0.74);
-  -moz-box-shadow: 0px 8px 22px 0px rgba(0, 0, 0, 0.74);
-  box-shadow: 0px 8px 22px 0px rgba(0, 0, 0, 0.74);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 90%;
+  height: 90%;
+  -webkit-box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.74);
+  -moz-box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.74);
+  box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.74);
 }

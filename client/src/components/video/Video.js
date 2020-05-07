@@ -39,7 +39,7 @@ const Video = (props) => {
     if (videoID !== null) {
       if (!window.YT) {
         const tag = document.createElement('script');
-        tag.src = 'http://www.youtube.com/iframe_api';
+        tag.src = 'https://www.youtube.com/iframe_api';
 
         window.onYouTubeIframeAPIReady = loadVideo;
 

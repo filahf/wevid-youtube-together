@@ -11,7 +11,6 @@ import { toast } from 'react-toastify';
 const CreateSession = (props) => {
   const history = useHistory();
   const [url, setUrl] = useState('');
-  const [redirect, setRedirect] = useState(false);
   const notify = () => toast('Invalid Link!');
 
   const sessionID = uuid().slice(0, 6);
@@ -23,7 +22,7 @@ const CreateSession = (props) => {
       return;
     }
     props.session(videoID, sessionID, true);
-    setRedirect(true);
+    history.push('/watch/leader');
   };
 
   const youtubeParser = (url) => {
@@ -32,9 +31,6 @@ const CreateSession = (props) => {
     return match && match[7].length === 11 ? match[7] : false;
   };
 
-  if (redirect) {
-    history.push('/watch/leader');
-  }
   return (
     <>
       <Welcome />

@@ -29,17 +29,22 @@ function App() {
         <Navbar />
         <div className='content'>
           <Switch>
-            <Route exact path='/'>
-              <CreateSession session={createSession} />
-            </Route>
-            <Route path='/watch/:sessionID'>
-              <Session
-                leader={leader}
-                sessionID={sessionID}
-                videoID={videoID}
-                action={action}
-              />
-            </Route>
+            <Route
+              exact
+              path='/'
+              render={() => <CreateSession session={createSession} />}
+            />
+            <Route
+              path='/watch/:sessionID'
+              render={() => (
+                <Session
+                  leader={leader}
+                  sessionID={sessionID}
+                  videoID={videoID}
+                  action={action}
+                />
+              )}
+            />
           </Switch>
         </div>
         <Footer />

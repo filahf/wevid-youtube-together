@@ -4,9 +4,11 @@
 
 #Bubbles [fill] {
   fill: #e5e9f0;
+  transition: fill 0.5s ease;
 }
 body.dark-mode #Bubbles [fill] {
   fill: #434c5e;
+  transition: fill 0.5s ease;
 }
 
 #Shadow [fill] {

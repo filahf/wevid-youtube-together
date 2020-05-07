@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useMediaQuery } from 'react-responsive';
 import { uuid } from 'uuidv4';
 import { useHistory } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -9,6 +10,9 @@ import './createSession.scss';
 import { toast } from 'react-toastify';
 
 const CreateSession = (props) => {
+  const isTabletOrMobileDevice = useMediaQuery({
+    query: '(max-device-width: 1224px)',
+  });
   const history = useHistory();
   const [url, setUrl] = useState('');
   const notify = () => toast('Invalid Link!');
@@ -33,21 +37,27 @@ const CreateSession = (props) => {
 
   return (
     <>
-      <Welcome />
-      <div className='share-container'>
-        <form className='share-form' onSubmit={handleSubmit}>
-          <input
-            placeholder='Paste a YouTube link '
-            className='share-input'
-            type='text'
-            value={url}
-            onChange={(e) => setUrl(e.target.value)}
-          />
-          <button className='share-button' type='Submit'>
-            <FontAwesomeIcon icon={faPlay} />
-          </button>
-        </form>
-      </div>
+      <Welcome mobile={isTabletOrMobileDevice} />
+      {isTabletOrMobileDevice ? (
+        <div className='mobileview'>
+          <p>Wevid is not available on mobile devices :(</p>
+        </div>
+      ) : (
+        <div className='share-container'>
+          <form className='share-form' onSubmit={handleSubmit}>
+            <input
+              placeholder='Paste a YouTube link '
+              className='share-input'
+              type='text'
+              value={url}
+              onChange={(e) => setUrl(e.target.value)}
+            />
+            <button className='share-button' type='Submit'>
+              <FontAwesomeIcon icon={faPlay} />
+            </button>
+          </form>
+        </div>
+      )}
     </>
   );
 };

@@ -3,7 +3,7 @@ function Graphic(props) {
   return (
     <svg
       width='auto'
-      height='280'
+      height={props.height}
       viewBox='0 0 1122 700'
       fill='none'
       xmlns='http://www.w3.org/2000/svg'

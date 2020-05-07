@@ -29,13 +29,6 @@ const Session = (props) => {
   });
   if (sessionID === 'leader' && !props.leader) {
     history.push('/');
-    /*     return (
-      <Redirect
-        to={{
-          pathname: `/`,
-        }}
-      />
-    ); */
   }
   return (
     <div>

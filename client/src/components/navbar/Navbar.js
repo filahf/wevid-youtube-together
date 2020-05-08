@@ -15,7 +15,7 @@ const Navbar = () => {
         </Link>
         {match && (
           <Link to='/'>
-            <h4>Share a Video</h4>
+            <h6>Share a Video</h6>
           </Link>
         )}
         <ThemeToggle />

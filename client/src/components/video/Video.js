@@ -41,7 +41,7 @@ const Video = (props) => {
       let data = JSON.parse(event.data);
       if (data.event === 'sync') updateVideo(data);
       if (data.event === 'join') join(data);
-      if (data.event === 'users') notify();
+      if (data.event === 'users' && props.leader) notify();
     });
     if (videoID !== null) {
       if (!window.YT) {

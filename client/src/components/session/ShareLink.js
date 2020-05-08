@@ -7,7 +7,6 @@ export default function CopyExample(props) {
   const [text, setText] = useState('link');
   const textAreaRef = useRef(null);
   var currentUrl = String(window.location.href).replace('leader', '');
-  console.log(currentUrl);
 
   useEffect(() => {
     setText(currentUrl + props.link);

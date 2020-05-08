@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import './video.scss';
+import Views from './views';
 var player;
 const Video = (props) => {
   const notify = () => {
@@ -31,7 +32,6 @@ const Video = (props) => {
   useEffect(() => {
     props.socket.addEventListener('message', (event) => {
       let data = JSON.parse(event.data);
-      console.log(data);
       if (data.event === 'sync') updateVideo(data);
       if (data.event === 'join') join(data);
       if (data.event === 'users') notify();
@@ -99,6 +99,7 @@ const Video = (props) => {
             <h3>No video found</h3>
           </div>
         </div>
+        {props.leader && <Views socket={props.socket} />}
       </div>
     </>
   );

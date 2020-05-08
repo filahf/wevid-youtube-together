@@ -13,8 +13,8 @@ const Video = (props) => {
     player = new window.YT.Player('player', {
       videoId: videoID,
       playerVars: {
-        autoplay: 0,
         mute: 1,
+        autoplay: 0,
       },
       events: {
         onReady: onPlayerReady,
@@ -85,7 +85,7 @@ const Video = (props) => {
     });
 
   const changeState = (triggered) => {
-    if (props.leader) {
+    if (true) {
       if (triggered === 1) sync();
       else if (triggered === 2) syncPause();
     }

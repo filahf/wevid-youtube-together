@@ -40,7 +40,7 @@ const CreateSession = (props) => {
       <Welcome mobile={isTabletOrMobileDevice} />
       {isTabletOrMobileDevice ? (
         <div className='mobileview'>
-          <p>Wevid is not available on mobile devices :(</p>
+          <p>Mobile users are only able to join on shared links</p>
         </div>
       ) : (
         <div className='share-container'>

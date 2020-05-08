@@ -1,11 +1,18 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUserFriends } from '@fortawesome/free-solid-svg-icons';
 import './video.scss';
 import Views from './views';
 var player;
 const Video = (props) => {
   const notify = () => {
-    toast('A Friend Joined');
+    toast(
+      <div>
+        <FontAwesomeIcon icon={faUserFriends} />
+        &nbsp; A friend joined!
+      </div>
+    );
   };
   const intervalRef = useRef();
   const [videoID, setVideoID] = useState(props.videoID);

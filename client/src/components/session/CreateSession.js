@@ -4,6 +4,7 @@ import { uuid } from 'uuidv4';
 import { useHistory } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay } from '@fortawesome/free-solid-svg-icons';
+import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
 import Welcome from '../welcome/welcome';
 
 import './createSession.scss';
@@ -15,7 +16,13 @@ const CreateSession = (props) => {
   });
   const history = useHistory();
   const [url, setUrl] = useState('');
-  const notify = () => toast('Invalid Link!');
+  const notify = () =>
+    toast(
+      <div>
+        <FontAwesomeIcon icon={faExclamationTriangle} />
+        &nbsp; Invalid Link!
+      </div>
+    );
 
   const sessionID = uuid().slice(0, 6);
   const handleSubmit = (evt) => {

@@ -22,16 +22,16 @@ export default function CopyExample(props) {
   }
 
   return (
-    <div className='share-container'>
+    <div className='input-container'>
       <h3 className='text'>Share this link</h3>
-      <form className='share-form'>
+      <form className='input-form'>
         <input
-          className='share-input'
+          className='input-field'
           readonly
           ref={textAreaRef}
           value={text}
         />
-        <button className='share-button' onClick={copyToClipboard}>
+        <button className='input-button' onClick={copyToClipboard}>
           <FontAwesomeIcon icon={faCopy} />
         </button>
       </form>

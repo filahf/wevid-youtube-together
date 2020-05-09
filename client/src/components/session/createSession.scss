@@ -1,4 +1,4 @@
-.share-container {
+.input-container {
   margin-top: 3rem;
   justify-content: center;
   text-align: center;
@@ -12,7 +12,7 @@
   margin-left: auto;
   margin-right: auto;
 }
-.share-form {
+.input-form {
   /* This bit sets up the horizontal layout */
   border-radius: 1rem;
   display: flex;
@@ -25,7 +25,7 @@
   box-shadow: 0px 8px 22px 0px rgba(0, 0, 0, 0.17);
 }
 
-.share-input {
+.input-field {
   /* Tell the input to use all the available space */
   flex: 1;
   font-size: 1rem;
@@ -35,12 +35,12 @@
   border: none;
 }
 
-.share-input:focus {
+.input-field:focus {
   /* removing the input focus blue box. Put this on the form if you like. */
   outline: none;
 }
 
-.share-button {
+.input-button {
   color: #bf616a;
   border: none;
   font-size: 1.2em;

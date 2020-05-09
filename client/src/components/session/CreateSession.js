@@ -50,16 +50,16 @@ const CreateSession = (props) => {
           <p>Mobile users are only able to join on shared links</p>
         </div>
       ) : (
-        <div className='share-container'>
-          <form className='share-form' onSubmit={handleSubmit}>
+        <div className='input-container'>
+          <form className='input-form' onSubmit={handleSubmit}>
             <input
               placeholder='Paste a YouTube link '
-              className='share-input'
+              className='input-field'
               type='text'
               value={url}
               onChange={(e) => setUrl(e.target.value)}
             />
-            <button className='share-button' type='Submit'>
+            <button className='input-button' type='Submit'>
               <FontAwesomeIcon icon={faPlay} />
             </button>
           </form>

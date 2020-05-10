@@ -8,7 +8,7 @@ const Welcome = (props) => {
   return (
     <div className='welcomecon'>
       <Graph height={height} />
-      <h2>Watch YouTube in sync with your loved ones!</h2>
+      <p className='title'>Watch YouTube in sync with your loved ones!</p>
     </div>
   );
 };

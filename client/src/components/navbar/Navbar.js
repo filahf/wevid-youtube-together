@@ -8,18 +8,18 @@ const Navbar = () => {
     path: '/watch/',
   });
   return (
-    <header>
-      <div className='navbar'>
+    <header className='navbar'>
+      <nav>
         <Link to='/'>
           <h4>Wevid</h4>
         </Link>
-        {match && (
-          <Link to='/'>
-            <h6>Share a Video</h6>
-          </Link>
-        )}
-        <ThemeToggle />
-      </div>
+      </nav>
+      {match && (
+        <Link to='/'>
+          <h4>Share a new video</h4>
+        </Link>
+      )}
+      <ThemeToggle />
     </header>
   );
 };

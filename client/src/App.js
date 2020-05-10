@@ -27,7 +27,7 @@ function App() {
       <div className='skewed'></div>
       <div className='container'>
         <Navbar />
-        <div className='content'>
+        <main className='content'>
           <Switch>
             <Route
               exact
@@ -46,7 +46,7 @@ function App() {
               )}
             />
           </Switch>
-        </div>
+        </main>
         <Footer />
       </div>
       <ToastContainer

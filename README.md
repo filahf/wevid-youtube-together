@@ -1,17 +1,19 @@
 # :sunny: Wevid  - Synchronized YouTube Player built in react
 
+> https://wevid.online/
+
 > Synchronized YouTube player that let friends watch videos together regardless of geograpic location
 
 ![Example screenshot](screeny.PNG)
 
-## Technologies
+### Technologies
 * React.js
-* Sass
+* CSS
 * Node.js
 * Websockets
 * Express
 
-## TODO
+### TODO
 - [ ] Auto sync with leader on join
 - [ ] Update video id without breaking the session
 

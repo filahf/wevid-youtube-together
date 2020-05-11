@@ -2,7 +2,7 @@
 
 > Synchronized YouTube player that let friends watch videos together regardless of geograpic location
 
-![Example screenshot](screeny.png)
+![Example screenshot](screeny.PNG)
 
 ## Technologies
 * React.js

@@ -14,7 +14,7 @@ const Video = (props) => {
       </div>
     );
   };
-  const intervalRef = useRef();
+
   const [videoID, setVideoID] = useState(props.videoID);
 
   const loadVideo = () => {
@@ -32,7 +32,6 @@ const Video = (props) => {
   };
 
   const join = (data) => {
-    intervalRef.current = data.users;
     setVideoID(data.videoID);
   };
 
@@ -92,10 +91,8 @@ const Video = (props) => {
     });
 
   const changeState = (triggered) => {
-    if (true) {
-      if (triggered === 1) sync();
-      else if (triggered === 2) syncPause();
-    }
+    if (triggered === 1) sync();
+    else if (triggered === 2) syncPause();
   };
 
   return (

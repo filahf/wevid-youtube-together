@@ -6,7 +6,7 @@ import ShareLink from './ShareLink';
 
 const Session = (props) => {
   const history = useHistory();
-  const url = 'wss://youtube-together-app.herokuapp.com/';
+  const url = 'ws://localhost:5000/';
   const socket = new WebSocket(url);
   let sessID = props.sessionID;
 

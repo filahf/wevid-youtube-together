@@ -4,11 +4,9 @@ import { uuid } from 'uuidv4';
 import { useHistory } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay } from '@fortawesome/free-solid-svg-icons';
-import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
 import Welcome from '../welcome/welcome';
-
+import { handleYouTubeUrl } from '../../linkHandler';
 import './createSession.scss';
-import { toast } from 'react-toastify';
 
 const CreateSession = (props) => {
   const isTabletOrMobileDevice = useMediaQuery({
@@ -16,30 +14,13 @@ const CreateSession = (props) => {
   });
   const history = useHistory();
   const [url, setUrl] = useState('');
-  const notify = () =>
-    toast(
-      <div>
-        <FontAwesomeIcon icon={faExclamationTriangle} />
-        &nbsp; Invalid Link!
-      </div>
-    );
 
   const sessionID = uuid().slice(0, 6);
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    var videoID = youtubeParser(url);
-    if (!videoID) {
-      notify();
-      return;
-    }
+    const videoID = handleYouTubeUrl(url);
     props.session(videoID, sessionID, true);
     history.push('/watch/leader');
-  };
-
-  const youtubeParser = (url) => {
-    var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
-    var match = url.match(regExp);
-    return match && match[7].length === 11 ? match[7] : false;
   };
 
   return (
@@ -53,7 +34,7 @@ const CreateSession = (props) => {
         <div className='input-container'>
           <form className='input-form' onSubmit={handleSubmit}>
             <input
-              placeholder='Paste a YouTube link '
+              placeholder='Paste a YouTube link'
               className='input-field'
               type='text'
               value={url}

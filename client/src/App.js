@@ -14,13 +14,11 @@ function App() {
   const [leader, setLeader] = useState(false);
   const [sessionID, setSessionID] = useState(null);
   const [videoID, setVideoID] = useState(null);
-  const [action, setAction] = useState('join');
 
   const createSession = (vidID, session, leaderbool) => {
     setVideoID(vidID);
     setSessionID(session);
     setLeader(leaderbool);
-    setAction('create');
   };
   return (
     <Router>
@@ -41,7 +39,6 @@ function App() {
                   leader={leader}
                   sessionID={sessionID}
                   videoID={videoID}
-                  action={action}
                 />
               )}
             />

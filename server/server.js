@@ -87,6 +87,7 @@ const handleSessionEvent = (data, ws) => {
   let action = data.action;
   if (action === 'create') createSession(data, ws);
   else if (action === 'join') joinSession(data, ws);
+  else if (action === 'update') updateSession(data, ws);
 };
 
 const createSession = (data, ws) => {
@@ -95,4 +96,20 @@ const createSession = (data, ws) => {
     users: [{ ws: ws }],
     videoID: data.videoID,
   });
+};
+
+const updateSession = (data, ws) => {
+  let session = sessionById(data.sessionID);
+
+  if (session) {
+    session.videoID = data.videoID;
+    brodcastMessage(
+      {
+        event: 'newVideo',
+        videoID: session.videoID
+      },
+      session.users,
+      ws
+    );
+  }
 };

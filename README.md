@@ -15,7 +15,7 @@
 
 ### TODO
 - [ ] Auto sync with leader on join
-- [ ] Update video id without breaking the session
+- [x] Update video id without breaking the session
 
 ### Setup
 `yarn install`
@@ -24,6 +24,22 @@
 
 ### Status
 Wevid is [live!](https://wevid.online/)
+
+## Contributors
+
+
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/Antrikshy"><img src="https://avatars3.githubusercontent.com/u/6601788?v=4" width="80px;" alt=""/>
+        <br /><sub><b>Antriksh Yadav</b>
+        </sub>
+      </a>
+      <br />
+      Update videoID
+    </td>
+  </tr>
+</table>
 
 ### Inspiration
 Project inspired by [@YasserYka](https://github.com/YasserYka/YT-API).

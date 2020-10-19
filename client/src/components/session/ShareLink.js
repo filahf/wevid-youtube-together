@@ -27,7 +27,7 @@ export default function CopyExample(props) {
       <form className='input-form'>
         <input
           className='input-field'
-          readonly
+          readOnly
           ref={textAreaRef}
           value={text}
         />

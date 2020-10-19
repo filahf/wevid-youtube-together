@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserFriends } from '@fortawesome/free-solid-svg-icons';
@@ -18,17 +18,21 @@ const Video = (props) => {
   const [videoID, setVideoID] = useState(props.videoID);
 
   const loadVideo = () => {
-    player = new window.YT.Player('player', {
-      videoId: videoID,
-      playerVars: {
-        mute: 1,
-        autoplay: 0,
-      },
-      events: {
-        onReady: onPlayerReady,
-        onStateChange: onStateChange,
-      },
-    });
+    if (!player) {
+      player = new window.YT.Player('player', {
+        videoId: videoID,
+        playerVars: {
+          mute: 1,
+          autoplay: 0,
+        },
+        events: {
+          onReady: onPlayerReady,
+          onStateChange: onStateChange,
+        },
+      });
+    } else {
+      player.loadVideoById(videoID);
+    }
   };
 
   const join = (data) => {
@@ -41,6 +45,7 @@ const Video = (props) => {
       if (data.event === 'sync') updateVideo(data);
       if (data.event === 'join') join(data);
       if (data.event === 'users' && props.leader) notify();
+      if (data.event === 'newVideo') setVideoID(data.videoID);
     });
     if (videoID !== null) {
       if (!window.YT) {
@@ -53,7 +58,8 @@ const Video = (props) => {
         firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
       } else loadVideo();
     }
-  });
+    // eslint-disable-next-line
+  }, [videoID]);
 
   const updateVideo = (data) => {
     let videoStatus = player.getPlayerState();
